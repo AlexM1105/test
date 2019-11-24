@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxsStoreModule } from '../ngxs/ngxs.module';
 import { INTERCEPTORS } from './interceptors';
+import { VALIDATION, VALIDATION_VALUE } from './constants/validation.const';
 
 
 @NgModule({
@@ -16,6 +17,10 @@ import { INTERCEPTORS } from './interceptors';
   ],
   providers: [
     INTERCEPTORS,
+  {
+    provide: VALIDATION,
+    useValue: VALIDATION_VALUE,
+  },
   ],
 })
 export class CoreModule { }
