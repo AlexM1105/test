@@ -8,6 +8,12 @@ const routes: Routes = [
   {
     path: '',
     component: AuthComponent,
+    children: [
+      {
+        path: 'sign-in',
+        loadChildren: () => import('./sign-in/sign-in.module').then(m => m.SignInModule),
+      },
+    ]
   }
 ];
 
