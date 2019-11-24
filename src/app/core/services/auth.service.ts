@@ -13,13 +13,17 @@ export class AuthService {
   ) {
   }
 
-  login(userData: AuthInterface) {
+  signIn(data: AuthInterface): void {
   }
 
-  register(userData: AuthInterface) {
+  signUp(data): void {
+    const input: AuthInterface = {
+      username: data.name,
+      password: data.password,
+    };
   }
 
-  logout() {
+  logout(): void {
     this.sessionService.removeToken();
   }
 }
