@@ -1,1 +1,40 @@
-<p>sign-up works!</p>
+<div class="title">Sign Up</div>
+
+<form [formGroup]="signUpForm" class="form" (submit)="onSubmit()">
+  <div class="row">
+    <mat-form-field class="form-field">
+      <input matInput [formControl]="nameControl" type="text" placeholder="NAME" class="name"/>
+      <mat-error *ngFor="let error of errors.name">
+        <span *ngIf="nameControl.hasError(error.name)">{{error.text}}</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="form-field">
+      <input matInput [formControl]="passwordControl" type="password" placeholder="PASSWORD"/>
+      <mat-error *ngFor="let error of errors.password">
+        <span *ngIf="passwordControl.hasError(error.name)">{{error.text}}</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="form-field">
+      <input matInput [formControl]="confirmPasswordControl" type="password" placeholder="CONFIRM PASSWORD"/>
+      <mat-error *ngFor="let error of errors.confirmPassword">
+        <span *ngIf="confirmPasswordControl.hasError(error.name)">{{error.text}}</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <button
+    mat-flat-button
+    [disabled]="!signUpForm.valid"
+    type="submit"
+    class="submit-btn"
+    color="primary">
+    Sign Up
+  </button>
+</form>
+
+<div class="link-wrap">
+  <a routerLink="/auth/sign-in" class="link">Sign In</a>
+</div>
