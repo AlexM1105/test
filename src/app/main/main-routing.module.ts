@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MainComponent } from './main.component';
+import { ProductResolver } from '../core/resolvers/product.resolver';
 
 
 const routes: Routes = [
@@ -13,6 +14,9 @@ const routes: Routes = [
         path: 'auth',
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
       },
+    ],
+    resolve: [
+      ProductResolver,
     ],
   },
 ];
