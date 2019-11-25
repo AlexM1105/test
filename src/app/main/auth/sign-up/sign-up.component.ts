@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { ApplicationService } from '../../core/services/application.service';
-import { AuthService } from '../../core/services/auth.service';
-import { validationErrors } from '../../shared/constants/validation-errors.const';
+import { ApplicationService } from '../../../core/services/application.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { validationErrors } from '../../../shared/constants/validation-errors.const';
 
 @Component({
   selector: 'app-sign-up',
