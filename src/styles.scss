@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600&display=swap');
+@import './styles/media.scss';
+@import './styles/base.scss';
+@import './styles/variables.scss';
+
+.container {
+  width: 100%;
+  max-width: 304px;
+  @include tablets {
+    max-width: $tabletsContainer;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @include desktop {
+    max-width: $desktopContainer;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.title {
+  font-weight: 700;
+  color: $gray900;
+  @include tablets {
+    font-size: 11px;
+  }
+  @include desktop {
+    font-size: 12px;
+  }
+}
