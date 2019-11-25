@@ -3,6 +3,12 @@
 @import './styles/base.scss';
 @import './styles/variables.scss';
 
+body {
+  font: 12px/20px 'Nunito Sans', sans-serif;
+  @include desktop {
+    font: 14px/20px 'Nunito Sans', sans-serif;
+  }
+}
 .container {
   width: 100%;
   max-width: 304px;
