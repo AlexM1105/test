@@ -16,7 +16,7 @@ export class SignInComponent implements OnInit {
   errors = validationErrors;
 
   get nameControl(): AbstractControl {
-    return this.signInForm.get('name');
+    return this.signInForm.get('username');
   }
 
   get passwordControl(): AbstractControl {
@@ -31,7 +31,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = new FormGroup({
-      name: new FormControl( '', [
+      username: new FormControl( '', [
           Validators.required,
           Validators.minLength(this.applicationService.validation.name.minlength),
         ],
