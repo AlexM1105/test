@@ -11,7 +11,8 @@ body {
 }
 .container {
   width: 100%;
-  max-width: 304px;
+  padding-left: 15px;
+  padding-right: 15px;
   @include tablets {
     max-width: $tabletsContainer;
     padding-left: 24px;
