@@ -1,1 +1,11 @@
-<p>products-list works!</p>
+<div class="products">
+  <div class="products-list">
+    <div class="products-item" *ngFor="let product of products$ | async">
+      <div class="img" [ngStyle]="{'background-image': 'url(' + (product.img | imageFullSrc) + ')'}">
+      </div>
+      <div class="info">
+        <div class="name">{{product.title}}</div>
+      </div>
+    </div>
+  </div>
+</div>
