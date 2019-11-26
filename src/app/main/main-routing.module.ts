@@ -11,8 +11,16 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
+        path: 'products',
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
+      },
+      {
         path: 'auth',
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+      },
+      {
+        path: '',
+        redirectTo: '/products',
       },
     ],
     resolve: [
