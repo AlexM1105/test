@@ -10,7 +10,7 @@
   .header-container {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0 14px;
+    padding: 12px 15px 14px;
     @include tablets {
       padding: 14px 24px;
     }
