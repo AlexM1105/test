@@ -7,9 +7,13 @@ import {
   MatButtonModule,
   MatInputModule,
 } from '@angular/material';
+import { ImageFullSrcPipe } from './pipes/image-full-src/image-full-src.pipe';
 
 
 @NgModule({
+  declarations: [
+    ImageFullSrcPipe,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -24,6 +28,10 @@ import {
     // Material modules
     MatButtonModule,
     MatInputModule,
+    ImageFullSrcPipe,
+  ],
+  providers: [
+    ImageFullSrcPipe,
   ],
 })
 export class AppSharedModule { }
