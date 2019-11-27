@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 
 import { AuthInterface } from '../models/auth.interface';
 import { SessionService } from './session.service';
 import { SignInAction, SignUpAction } from '../../ngxs/auth/auth.actions';
+import { Observable } from 'rxjs';
+import { AuthGetterState } from '../../ngxs/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  @Select(AuthGetterState.isGuest)
+  isGuest$: Observable<boolean>;
+
+  @Select(AuthGetterState.getIsSignInFormCorrect)
+  isSignInFormCorrect$: Observable<boolean>;
 
   constructor(
     private sessionService: SessionService,
