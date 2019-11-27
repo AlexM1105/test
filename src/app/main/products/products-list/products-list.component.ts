@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -16,7 +17,11 @@ export class ProductsListComponent {
 
   constructor(
     private productService: ProductService,
+    private router: Router,
   ) {
   }
-
+  selectProduct(id: string) {
+    this.productService.selectProduct(id);
+    this.router.navigate(['products', 'reviews', id]);
+}
 }
