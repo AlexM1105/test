@@ -11,6 +11,9 @@ import { RequestsState } from './requests/requests.state';
 import { SignInRequestState } from './requests/auth/sign-in/sign-in-request.state';
 import { SignUpRequestState } from './requests/auth/sign-up/sign-up-request.state';
 import { ProductsGetRequestState } from './requests/product/products-get/products-get-request.state';
+import { ReviewsGetRequestState } from './requests/review/reviews-get/reviews-get-request.state';
+import { ReviewPostRequestState } from './requests/review/review-post/review-post-request.state';
+import { ReviewState } from './review';
 
 
 @NgModule({
@@ -19,11 +22,14 @@ import { ProductsGetRequestState } from './requests/product/products-get/product
       [
         AuthState,
         ProductState,
+        ReviewState,
         // requests
         RequestsState,
         SignInRequestState,
         SignUpRequestState,
         ProductsGetRequestState,
+        ReviewsGetRequestState,
+        ReviewPostRequestState,
       ]
     ),
     NgxsRouterPluginModule.forRoot(),

@@ -4,6 +4,8 @@ import { IRequestsNestedState } from './requests.interface';
 import { SignInRequestState } from './auth/sign-in/sign-in-request.state';
 import { SignUpRequestState } from './auth/sign-up/sign-up-request.state';
 import { ProductsGetRequestState } from './product/products-get/products-get-request.state';
+import { ReviewsGetRequestState } from './review/reviews-get/reviews-get-request.state';
+import { ReviewPostRequestState } from './review/review-post/review-post-request.state';
 
 
 export interface RequestsStateModel {
@@ -16,7 +18,8 @@ export interface RequestsStateModel {
     SignInRequestState,
     SignUpRequestState,
     ProductsGetRequestState,
-
+    ReviewsGetRequestState,
+    ReviewPostRequestState,
   ],
 })
 export class RequestsState {
@@ -24,6 +27,8 @@ export class RequestsState {
     SignUpRequestState,
     SignInRequestState,
     ProductsGetRequestState,
+    ReviewsGetRequestState,
+    ReviewPostRequestState,
   ])
   static loadingStatus(requestsState: {[key: string]: IRequestsNestedState}): boolean {
     const states = Object.values(requestsState);
