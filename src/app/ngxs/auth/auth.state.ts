@@ -15,14 +15,16 @@ import { SessionService } from '../../core/services/session.service';
 
 export interface AuthStateModel {
   isSignInFormCorrect: boolean;
-  isLoggedIn: boolean;
+  success: boolean;
+  token: string;
 }
 
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {
     isSignInFormCorrect: true,
-    isLoggedIn: false,
+    success: null,
+    token: null,
   },
 })
 export class AuthState {
@@ -41,7 +43,7 @@ export class AuthState {
   @Action(SignUpSuccessAction)
   signUpSuccess(ctx: StateContext<AuthStateModel>, action: SignUpSuccessAction) {
     ctx.patchState({
-      isLoggedIn: action.payload.success,
+      success: action.payload.success,
     });
     this.sessionService.setToken(action.payload.token);
     ctx.dispatch(new Navigate(['/']));
@@ -61,7 +63,7 @@ export class AuthState {
   signInSuccess(ctx: StateContext<AuthStateModel>, action: SignInSuccessAction) {
     ctx.patchState({
       isSignInFormCorrect: action.payload.success,
-      isLoggedIn: action.payload.success,
+      success: action.payload.success,
     });
     this.sessionService.setToken(action.payload.token);
     ctx.dispatch(new Navigate(['/']));

@@ -10,7 +10,7 @@ export class AuthGetterState {
   }
 
   @Selector([AuthState])
-  static getIsLoggedIn(state: AuthStateModel) {
-    return state.isLoggedIn;
+  static isGuest(state: AuthStateModel) {
+    return !state.success;
   }
 }
