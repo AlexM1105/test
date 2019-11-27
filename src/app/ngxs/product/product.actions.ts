@@ -10,7 +10,7 @@ export const ActionTypes = {
 export class SelectProductAction {
   static type = ActionTypes.SELECT_PRODUCT;
 
-  constructor(public payload?: number) {
+  constructor(public payload?: string) {
   }
 }
 

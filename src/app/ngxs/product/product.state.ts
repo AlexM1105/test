@@ -7,7 +7,7 @@ import { ProductsGetRequestAction } from '../requests/product/products-get/produ
 export interface ProductStateModel {
   entities: {[key: string]: ProductModel};
   ids: string[];
-  selectedProductId: number;
+  selectedProductId: string;
 }
 
 @State<ProductStateModel>({
