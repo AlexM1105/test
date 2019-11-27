@@ -20,8 +20,8 @@ export class ProductsListComponent {
     private router: Router,
   ) {
   }
+
   selectProduct(id: string) {
-    this.productService.selectProduct(id);
     this.router.navigate(['products', 'reviews', id]);
-}
+  }
 }
