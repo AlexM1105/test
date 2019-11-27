@@ -16,6 +16,7 @@
           <a
             class="menu-link menu-link_hover"
             routerLinkActive="menu-link_active"
+            *ngIf="isGuest$ | async"
             routerLink="/auth/sign-in">
             Sign In
           </a>
@@ -24,6 +25,7 @@
           <a
             class="menu-link menu-link_hover"
             routerLinkActive="menu-link_active"
+            *ngIf="isGuest$ | async"
             routerLink="/auth/sign-up">
             Sign Up
           </a>
