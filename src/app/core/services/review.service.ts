@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Select, Store } from '@ngxs/store';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { ReviewGetterState } from '../../ngxs/review';
 import { ReviewModel } from '../models/review.model';
 import { CreateReviewAction, LoadReviewsAction } from '../../ngxs/review/review.actions';
+import { ReviewPostRequestGetterState } from '../../ngxs/requests/review/review-post/review-post-request-getter.state';
+import { IRequestsNestedState } from '../../ngxs/requests/requests.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,9 @@ export class ReviewService {
 
   @Select(ReviewGetterState.getReviews)
   reviews$: Observable<ReviewModel[]>;
+
+  @Select(ReviewPostRequestGetterState.getReviewPostRequestState)
+  reviewPostRequestState$: Observable<IRequestsNestedState>;
 
   constructor(
     private store: Store,
@@ -31,12 +36,11 @@ export class ReviewService {
     return this.httpClient.get(`reviews/${id}`);
   }
 
-  createReview(data) {
+  createReview(data: {id: string, text: string, rate: number}) {
     this.store.dispatch(new CreateReviewAction(data));
   }
 
-  createReviewRequest(data) {
-    const id = 1;
-    return this.httpClient.get(`reviews/${id}`, data);
+  createReviewRequest({id, ...data}) {
+    return this.httpClient.post(`reviews/${id}`, data);
   }
 }
