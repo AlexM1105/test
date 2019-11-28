@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 import { ReviewGetterState } from '../../ngxs/review';
 import { ReviewModel } from '../models/review.model';
 import { CreateReviewAction, LoadReviewsAction } from '../../ngxs/review/review.actions';
-import { ReviewPostRequestGetterState } from '../../ngxs/requests/review/review-post/review-post-request-getter.state';
 import { IRequestsNestedState } from '../../ngxs/requests/requests.interface';
 
 @Injectable({
@@ -18,13 +17,16 @@ export class ReviewService {
   @Select(ReviewGetterState.getReviews)
   reviews$: Observable<ReviewModel[]>;
 
-  @Select(ReviewPostRequestGetterState.getReviewPostRequestState)
   reviewPostRequestState$: Observable<IRequestsNestedState>;
 
   constructor(
     private store: Store,
     private httpClient: HttpClient,
   ) {
+
+    this.reviewPostRequestState$ = this.store.select(
+      (state) => state.requests.reviewPostRequestState,
+    );
   }
 
   getReviews(id: string) {
