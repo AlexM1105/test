@@ -8,6 +8,7 @@ import {
   MatInputModule,
 } from '@angular/material';
 import { ImageFullSrcPipe } from './pipes/image-full-src/image-full-src.pipe';
+import { RatingModule } from 'ng-starrating';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ImageFullSrcPipe } from './pipes/image-full-src/image-full-src.pipe';
   imports: [
     CommonModule,
     RouterModule,
+    RatingModule,
     // Material modules
     MatButtonModule,
     MatInputModule,
@@ -25,9 +27,11 @@ import { ImageFullSrcPipe } from './pipes/image-full-src/image-full-src.pipe';
     ReactiveFormsModule,
     CommonModule,
     RouterModule,
+    RatingModule,
     // Material modules
     MatButtonModule,
     MatInputModule,
+    // pipes
     ImageFullSrcPipe,
   ],
   providers: [
