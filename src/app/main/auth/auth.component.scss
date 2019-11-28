@@ -2,23 +2,26 @@
 @import "../../../styles/variables";
 
 :host ::ng-deep {
-  .auth{
+  .auth {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding-top: 10vh;
+
     .auth-container {
       width: 100%;
       max-width: 500px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0px 5px 10px 0px rgba(10,10,10, .3);
+      box-shadow: 0px 5px 10px 0px rgba(10, 10, 10, .3);
+
       .auth-header {
         background-color: $gray300;
         color: #fff;
         font-size: 32px;
         padding: 40px 30px;
       }
+
       .auth-content {
         padding: 40px 30px 30px;
         display: flex;
@@ -26,8 +29,4 @@
       }
     }
   }
-  .form-field {
-    width: 100%;
-  }
-
 }
