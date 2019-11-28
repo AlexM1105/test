@@ -33,7 +33,7 @@ export class ReviewState {
   @Action(LoadReviewsSuccessAction)
   loadReviewsSuccess(ctx: StateContext<ReviewStateModel>, action: LoadReviewsSuccessAction) {
     const entities = action.payload.reduce((acc: { [id: string]: any }, entity: ProductModel) => {
-      return {...acc, [entity.id]: new ReviewModel(entity)};
+      return {[entity.id]: new ReviewModel(entity), ...acc};
     }, {});
     ctx.patchState({
       entities,
@@ -48,16 +48,16 @@ export class ReviewState {
 
   @Action(CreateReviewSuccessAction)
   createReviewSuccess(ctx: StateContext<ReviewStateModel>, action: CreateReviewSuccessAction) {
-    ctx.patchState({
-      entities: {
-        ...ctx.getState().entities,
-        ...action.payload,
-      },
-      ids: [
-        ...ctx.getState().ids,
-        ...action.payload.id,
-      ],
-    });
+    // ctx.patchState({
+    //   entities: {
+    //     ...ctx.getState().entities,
+    //     ...action.payload,
+    //   },
+    //   ids: [
+    //     ...ctx.getState().ids,
+    //     ...action.payload.id,
+    //   ],
+    // });
   }
 
 }
