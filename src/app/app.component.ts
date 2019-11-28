@@ -10,6 +10,8 @@ import { AuthService } from './core/services/auth.service';
 })
 export class AppComponent {
 
+  // remove token on app reload because of no endpoints for token check
+
   @HostListener('window:onbeforeunload', ['$event'])
   clearLocalStorage(event) {
     this.authService.logout();
