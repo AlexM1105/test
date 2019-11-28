@@ -1,1 +1,38 @@
-<p>product works!</p>
+<div class="product">
+  <div class="product-item" *ngIf="selectedProduct$ | async as product">
+    <div class="product-img" [ngStyle]="{'background-image': 'url(' + (product.img | imageFullSrc) + ')'}"></div>
+    <div class="product-info">
+      <div class="name">{{product.title}}</div>
+      <div class="details">
+        <div class="head">Description</div>
+        <div class="text">{{product.text}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews">
+    <div class="create-review" *ngIf="!(isGuest$ | async)">
+      <app-review-create></app-review-create>
+    </div>
+    <div class="review" *ngFor="let review of reviews$ | async">
+      <div class="review-header">
+        <div class="name">{{review.created_by.username}}</div>
+        <div class="date">
+          <span class="pretext">at</span>
+          <span class="text">{{review.created_at | date: 'dd/MM/yyyy'}}</span>
+        </div>
+      </div>
+      <div class="review-rate">
+        <span class="head">Rate</span>
+        <span class="amount">{{review.rate}}</span>
+      </div>
+      <div class="review-message">
+        <div class="head">
+          Comment message
+        </div>
+        <div class="message">
+          {{review.text}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
