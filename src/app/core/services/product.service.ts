@@ -17,6 +17,9 @@ export class ProductService {
   @Select(ProductGetterState.getProducts)
   products$: Observable<ProductModel[]>;
 
+  @Select(ProductGetterState.getSelectedProduct)
+  selectedProduct$: Observable<ProductModel>;
+
   constructor(
     private store: Store,
     private httpClient: HttpClient,
