@@ -6,6 +6,10 @@
       width: 100%;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
+      @include tablets {
+        justify-content: flex-start;
+      }
     }
     &-item {
       margin-bottom: 20px;
