@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600&display=swap');
+@import "styles/theme.scss";
 @import './styles/media.scss';
 @import './styles/base.scss';
 @import './styles/variables.scss';
 
 body {
   font: 12px/20px 'Nunito Sans', sans-serif;
+  color: #333;
   @include desktop {
     font: 14px/20px 'Nunito Sans', sans-serif;
   }
@@ -28,19 +30,13 @@ body {
 .title {
   font-weight: 700;
   color: $gray900;
-  @include tablets {
-    font-size: 11px;
-  }
-  @include desktop {
-    font-size: 12px;
-  }
-}
-
-
-.title {
-  font-size: 26px;
+  font-size: 18px;
   opacity: .8;
+  @include tablets {
+    font-size: 26px;
+  }
 }
+
 .description {
   margin-top: 20px;
   font-size: 14px;
@@ -75,4 +71,9 @@ body {
   margin-top: 20px!important;
   font-size: 18px;
   color: #fff!important;
+}
+
+.form-field {
+  font-size: 15px;
+  width: 100%;
 }
