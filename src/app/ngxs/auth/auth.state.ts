@@ -12,6 +12,7 @@ import {
 import { SignUpRequestAction } from '../requests/auth/sign-up/sign-up-request.actions';
 import { SignInRequestAction } from '../requests/auth/sign-in/sign-in-request.actions';
 import { SessionService } from '../../core/services/session.service';
+import { SnackService } from '../../core/services/snack.service';
 
 export interface AuthStateModel {
   isSignInFormCorrect: boolean;
@@ -31,9 +32,9 @@ export class AuthState {
 
   constructor(
     private sessionService: SessionService,
+    private snackService: SnackService,
   ) {
   }
-
 
   @Action(SignUpAction)
   signUp(ctx: StateContext<AuthStateModel>, action: SignUpAction) {
@@ -45,8 +46,15 @@ export class AuthState {
     ctx.patchState({
       success: action.payload.success,
     });
-    this.sessionService.setToken(action.payload.token);
-    ctx.dispatch(new Navigate(['/']));
+
+    // additional check because of wrong request status on login fail
+    if (action.payload.success) {
+      this.sessionService.setToken(action.payload.token);
+      this.snackService.showSnack('Registration success', 4000, 'success');
+      ctx.dispatch(new Navigate(['/']));
+    } else {
+      this.snackService.showSnack(action.payload.message);
+    }
   }
 
   @Action(SignUpFailAction)
@@ -55,7 +63,7 @@ export class AuthState {
   }
 
   @Action(SignInAction)
-  signInForm(ctx: StateContext<AuthStateModel>, action: SignInAction) {
+  signIn(ctx: StateContext<AuthStateModel>, action: SignInAction) {
     ctx.dispatch(new SignInRequestAction(action.payload));
   }
 
@@ -65,8 +73,14 @@ export class AuthState {
       isSignInFormCorrect: action.payload.success,
       success: action.payload.success,
     });
-    this.sessionService.setToken(action.payload.token);
-    ctx.dispatch(new Navigate(['/']));
+
+    // additional check because of wrong request status on login fail
+    if (action.payload.success) {
+      this.sessionService.setToken(action.payload.token);
+      ctx.dispatch(new Navigate(['/']));
+    } else {
+      this.snackService.showSnack(action.payload.message);
+    }
   }
 
   @Action(SignInFailAction)
