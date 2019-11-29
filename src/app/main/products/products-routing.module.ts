@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProductsComponent } from './products.component';
+import { ProductResolver } from '../../core/resolvers/product.resolver';
 
 
 const routes: Routes = [
@@ -17,6 +18,9 @@ const routes: Routes = [
         path: 'reviews/:id',
         loadChildren: () => import('./product-reviews/product-reviews.module').then(m => m.ProductReviewsModule),
       },
+    ],
+    resolve: [
+      ProductResolver,
     ],
   }
 ];
