@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { AuthService } from '../services/auth.service';
+import { SnackService } from '../services/snack.service';
 
 
 @Injectable()
@@ -12,6 +13,7 @@ export class AuthErrorInterceptor implements HttpInterceptor {
 
   constructor(
     private authService: AuthService,
+    private snackService: SnackService,
   ) {
   }
 
@@ -20,10 +22,9 @@ export class AuthErrorInterceptor implements HttpInterceptor {
       catchError(err => {
         if (err.status === 401) {
           this.authService.logout();
-          location.reload();
         }
-
-        const error = err.error.message || err.statusText;
+        const error = err.error.detail || err.statusText;
+        this.snackService.showSnack(error);
         return throwError(error);
       }));
   }
