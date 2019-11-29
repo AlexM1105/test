@@ -5,10 +5,10 @@
     &-list {
       width: 100%;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       @include tablets {
-        justify-content: flex-start;
+        flex-direction: row;
       }
     }
     &-item {
