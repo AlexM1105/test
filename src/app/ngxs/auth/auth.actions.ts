@@ -8,6 +8,8 @@ const ActionTypes = {
   SIGN_IN: '[Auth] Sign In',
   SIGN_IN_SUCCESS: '[Auth] Sign In Success',
   SIGN_IN_FAIL: '[Auth] Sign In Fail',
+
+  LOGOUT: '[Auth] Log out',
 };
 
 export class SignUpAction {
@@ -49,6 +51,9 @@ export class SignInFailAction {
   }
 }
 
+export class LogoutAction {
+  static type = ActionTypes.LOGOUT;
+}
 
 
 

@@ -2,6 +2,7 @@ import { Action, State, StateContext } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
 
 import {
+  LogoutAction,
   SignInAction,
   SignInFailAction,
   SignInSuccessAction,
@@ -87,6 +88,14 @@ export class AuthState {
   signInFail(ctx: StateContext<AuthStateModel>, action: SignInFailAction) {
     ctx.patchState({
       isSignInFormCorrect: false,
+    });
+  }
+
+  @Action(LogoutAction)
+  logout(ctx: StateContext<AuthStateModel>) {
+    this.sessionService.removeToken();
+    ctx.patchState({
+      success: false,
     });
   }
 }
