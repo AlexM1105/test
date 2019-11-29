@@ -10,6 +10,7 @@ import { ReviewModel } from '../../core/models/review.model';
 import { ReviewsGetRequestAction } from '../requests/review/reviews-get/reviews-get-request.actions';
 import { ReviewPostRequestAction } from '../requests/review/review-post/review-post-request.actions';
 import { ProductModel } from '../../core/models/product.model';
+import { SnackService } from '../../core/services/snack.service';
 
 export interface ReviewStateModel {
   entities: { [key: string]: ReviewModel };
@@ -24,6 +25,11 @@ export interface ReviewStateModel {
   },
 })
 export class ReviewState {
+
+  constructor(
+    private snackService: SnackService,
+  ) {
+  }
 
   @Action(LoadReviewsAction)
   loadReviews(ctx: StateContext<ReviewStateModel>, action: LoadReviewsAction) {
@@ -46,9 +52,12 @@ export class ReviewState {
     ctx.dispatch(new ReviewPostRequestAction(action.payload));
   }
 
-  // returned value differs from expected
   @Action(CreateReviewSuccessAction)
   createReviewSuccess(ctx: StateContext<ReviewStateModel>, action: CreateReviewSuccessAction) {
+    this.snackService.showSnack('Sent successfully', 4000, 'success');
+
+    // returned value differs from expected
+
     // ctx.patchState({
     //   entities: {
     //     ...ctx.getState().entities,
