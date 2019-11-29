@@ -5,7 +5,7 @@ import { Select, Store } from '@ngxs/store';
 
 import { AuthInterface } from '../models/auth.interface';
 import { SessionService } from './session.service';
-import { SignInAction, SignUpAction } from '../../ngxs/auth/auth.actions';
+import { LogoutAction, SignInAction, SignUpAction } from '../../ngxs/auth/auth.actions';
 import { Observable } from 'rxjs';
 import { AuthGetterState } from '../../ngxs/auth';
 
@@ -48,6 +48,6 @@ export class AuthService {
   }
 
   logout(): void {
-    this.sessionService.removeToken();
+    this.store.dispatch(new LogoutAction());
   }
 }
