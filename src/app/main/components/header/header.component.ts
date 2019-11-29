@@ -18,4 +18,8 @@ export class HeaderComponent {
     private authService: AuthService,
   ) {
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }

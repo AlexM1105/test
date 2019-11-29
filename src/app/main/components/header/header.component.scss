@@ -53,7 +53,7 @@
     letter-spacing: .23px;
     font-weight: 500;
     position: relative;
-
+    cursor: pointer;
     &::after {
       content: '';
       position: absolute;
