@@ -9,7 +9,7 @@ import { SnackService } from '../services/snack.service';
 
 
 @Injectable()
-export class AuthErrorInterceptor implements HttpInterceptor {
+export class ErrorInterceptor implements HttpInterceptor {
 
   constructor(
     private authService: AuthService,
