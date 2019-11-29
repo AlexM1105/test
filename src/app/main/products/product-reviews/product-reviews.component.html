@@ -14,7 +14,7 @@
       <app-review-create></app-review-create>
     </div>
     <div class="review" *ngFor="let review of reviews$ | async">
-      <div class="review-header">
+      <div class="review-head">
         <div class="name">{{review.created_by.username}}</div>
         <div class="date">
           <span class="pretext">at</span>
@@ -22,12 +22,12 @@
         </div>
       </div>
       <div class="review-rate">
-        <span class="head">Rate</span>
+        <span class="head">Rate:</span>
         <span class="amount">{{review.rate}}</span>
       </div>
       <div class="review-message">
         <div class="head">
-          Comment message
+          Comment message:
         </div>
         <div class="message">
           {{review.text}}

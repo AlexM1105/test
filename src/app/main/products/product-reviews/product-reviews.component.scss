@@ -82,16 +82,17 @@
           margin-bottom: 0;
         }
 
-        &-header {
+        &-head {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 12px;
+          margin-bottom: 14px;
 
           .name {
-            margin-right: 30px;
             font-weight: 600;
             font-size: 18px;
             color: $gray900;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
           .date {
@@ -108,7 +109,7 @@
         }
 
         &-rate {
-          margin-bottom: 8px;
+          margin-bottom: 14px;
 
           .head {
             text-transform: uppercase;
@@ -119,6 +120,7 @@
 
           .amount {
             color: $gray900;
+            font-size: 14px;
           }
         }
 
@@ -127,10 +129,14 @@
             color: $gray700;
             text-transform: uppercase;
             font-size: 10px;
+            margin-bottom: 5px;
           }
 
           .message {
             font-weight: 500;
+            font-size: 16px;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
       }
